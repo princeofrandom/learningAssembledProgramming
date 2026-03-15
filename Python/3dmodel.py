@@ -4,24 +4,18 @@
 
 import plotly.graph_objects as go
 import numpy as np
+import math
 
 x = np.arange(-1,1,.01)
 y = np.arange(-1,1,.01)
 X,Y = np.meshgrid(x,y)
 a = 3
-b = 2
-Z = a*X**2 + b*Y**2
+b = 3
+Z = np.sqrt((a**2)*(x**2) + (b**2)*(y**2))
 
 fig = go.Figure(
     data=[go.Surface(z=Z, x=x, y=y, colorscale="Reds", opacity=0.5)])
-fig.update_layout(
-    title='My title', 
-    autosize=False,
-    width=500, 
-    height=500,
-    margin=dict(l=65, r=50, b=65, t=90), 
-    scene_aspectmode='cube'
-)
+
 fig.show()
 
 
