@@ -1,0 +1,25 @@
+// Frequency = 2000 Hz
+// PWM Output on Pin 9 (OC1A)
+
+float D = 50.0; // Duty cycle percentage (0-100)
+
+void setup() {
+  pinMode(9, OUTPUT);
+
+  // Configure Timer 1
+  TCCR1A = _BV(COM1A1) | _BV(WGM11); // Clear OC1A on compare match, set at Bottom
+  TCCR1B = _BV(WGM13) | _BV(CS11);   // Phase/Freq Correct, Prescaler = 8
+
+  // Set the TOP value to define the frequency
+  // Formula: TOP = F_CPU / (2 * Prescaler * F_Target)
+  // TOP = 16,000,000 / (2 * 8 * 2000) = 500
+  ICR1 = 500; 
+}
+
+void loop() {
+  // Calculate the compare value based on duty cycle D
+  // OCR1A = (D / 100) * TOP
+  unsigned int dutyValue = (D / 100.0) * 500;
+  
+  OCR1A = dutyValue;
+}
