@@ -2,6 +2,8 @@ import curses
 from time import sleep
 from rplife.grid import lifeGrid
 
+
+
 class CursesView:
     def __init__(self, pattern, gen=10, frame_rate=7, bbox=(0,0,20,20)):
         self.pattern = pattern

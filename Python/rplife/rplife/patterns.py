@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
+from rplife.views import CursesView
 
 PATTERNS_FILE = Path(__file__).parent / "patterns.toml"
 
