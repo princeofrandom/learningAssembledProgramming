@@ -10,10 +10,9 @@ int main()
     int direction = 0;
     int cursor;
     int sum = 0;
-
+    char *test;
     int dial = 50;
     fptr = fopen("d1test.txt", "r");
-    // printf("%s", fgets(mystring, 100, fptr));
     printf("I started working");
     for (int i = 0; i < 1; i++)
     {
@@ -23,7 +22,9 @@ int main()
         } else {
             direction = 0;
         }
-        cursor = strtol(fgets(mystring, 20, fptr),20,10);
+        test = fgets(mystring, 20, fptr);
+        printf("%s", test);
+         // passing integer when it wants a pointer to a string 
         if (direction == 1) {
             printf("Move Right\n");
             printf("Cursor is now %d \n", cursor);
