@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main()
 {
     FILE *fptr;
     char dir[1];
     char mystring[100];
-    char *direction;
+    int direction = 0;
     int cursor;
     int sum = 0;
 
@@ -17,9 +18,13 @@ int main()
     for (int i = 0; i < 1; i++)
     {
         // printf("%d\n", dial);
-        direction = fgets(dir, 1, fptr);
+        if (strcmp(fgets(dir, 2, fptr),"R")) {
+            direction = 1;
+        } else {
+            direction = 0;
+        }
         cursor = strtol(fgets(mystring, 20, fptr),20,10);
-        if (direction == 'R') {
+        if (direction == 1) {
             printf("Move Right\n");
             printf("Cursor is now %d \n", cursor);
             for(int i = 0; i < cursor; i++) {
@@ -32,7 +37,7 @@ int main()
             }
             // printf("%s", cursor);
         }
-        if (direction == 'L') {
+        if (direction == 0) {
             printf("Move Left\n");
             // printf("Cursor is now %s \n", cursor);
             for(int i = 0; i < cursor; i++) {
