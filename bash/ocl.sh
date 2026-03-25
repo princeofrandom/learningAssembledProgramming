@@ -24,15 +24,24 @@ if [[ -f "$target" ]]; then
     echo "Compiling $target and naming it $objName"
 else
     echo "$target does not exist or is not a regular file."
+    exit 1
+fi
+
+echo $'\n---\n' >> "/Users/dillonkennamer/Documents/Obsidian Vaults/Secundus/DebugLogs/$debugLogName"
+
+if gcc $target -o $objName 2>> "/Users/dillonkennamer/Documents/Obsidian Vaults/Secundus/DebugLogs/$debugLogName"; then
+  echo "Compilation success at $simpletime on $simpledate" >> "/Users/dillonkennamer/Documents/Obsidian Vaults/Secundus/DebugLogs/$debugLogName"  
+else
+  echo "#debugLog Compilation failure at $simpletime on $simpledate" >> "/Users/dillonkennamer/Documents/Obsidian Vaults/Secundus/DebugLogs/$debugLogName"
+  echo 2>> "/Users/dillonkennamer/Documents/Obsidian Vaults/Secundus/DebugLogs/$debugLogName"
 fi
 
 
 
 
-
-echo $'\n---\n' >> "/Users/dillonkennamer/Documents/Obsidian Vaults/Secundus/DebugLogs/$debugLogName"
-echo "#debugLog Compilation attempt at $simpletime on $simpledate" >> "/Users/dillonkennamer/Documents/Obsidian Vaults/Secundus/DebugLogs/$debugLogName"
-gcc $target -o $objName 2>> "/Users/dillonkennamer/Documents/Obsidian Vaults/Secundus/DebugLogs/$debugLogName"
+# echo $'\n---\n' >> "/Users/dillonkennamer/Documents/Obsidian Vaults/Secundus/DebugLogs/$debugLogName"
+# echo "#debugLog Compilation attempt at $simpletime on $simpledate" >> "/Users/dillonkennamer/Documents/Obsidian Vaults/Secundus/DebugLogs/$debugLogName"
+# gcc $target -o $objName 2>> "/Users/dillonkennamer/Documents/Obsidian Vaults/Secundus/DebugLogs/$debugLogName"
 
 # echo "Failed to compile at 
 
