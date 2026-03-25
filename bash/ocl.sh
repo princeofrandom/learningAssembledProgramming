@@ -12,10 +12,12 @@ objName="${target%.*}"
 debugLogTitle="$target file Debug Log"
 debugLogName="$objName.md"
 
-echo $target
-echo $objName
-echo $debugLogName
-echo $debugLogTitle
+# echo $target
+# echo $objName
+# echo $debugLogName
+# echo $debugLogTitle
+# echo $simpledate
+# echo $simpletime
 
 
 if [[ -f "$target" ]]; then
@@ -25,8 +27,7 @@ else
 fi
 
 
-echo $simpledate
-echo $simpletime
+
 
 
 echo $'\n---\n' >> "/Users/dillonkennamer/Documents/Obsidian Vaults/Secundus/DebugLogs/$debugLogName"
